@@ -1,0 +1,37 @@
+{
+  "developers": [
+    {
+      "name": "vasya"
+    },
+    {
+      "name": "valya"
+    },
+    {
+      "name": "masha"
+    },
+    {
+      "name": "pasha"
+    },
+    {
+      "name": "katya"
+    }
+  ],
+  "testers": [
+    {
+      "name": "vova"
+    },
+    {
+      "name": "dasha"
+    }
+  ],
+  "support": [
+    {
+      "name": "vanya"
+    }
+  ],
+  "manager": [
+    {
+      "name": "anya"
+    }
+  ]
+}

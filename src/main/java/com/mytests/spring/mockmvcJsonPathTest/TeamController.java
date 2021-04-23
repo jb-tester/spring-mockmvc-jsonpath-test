@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TeamController {
 
-    @RequestMapping("/team/people")
+    @RequestMapping(path = "/team/people", produces = "application/json")
     public MultiValueMap<String, Person> get() {
         MultiValueMap<String, Person> map = new LinkedMultiValueMap<>();
 
