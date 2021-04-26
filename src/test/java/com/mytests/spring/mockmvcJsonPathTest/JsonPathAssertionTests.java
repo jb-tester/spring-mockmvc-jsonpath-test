@@ -39,13 +39,12 @@ public class JsonPathAssertionTests {
     @Test
     public void testPresence() throws Exception {
         String dev = "$.developers[?(@.name == '%s')]";
-        String qa = "$.testers[?(@.name == '%s')]";
 
         this.mockMvc.perform(get("/team/people"))
                 .andExpect(jsonPath(dev, "vasya").exists())
                 .andExpect(jsonPath(dev, "pasha").exists())
-                .andExpect(jsonPath(qa, "vova").exists())
-                .andExpect(jsonPath(qa, "dasha").exists())
+                .andExpect(jsonPath("$.testers[?(@.name == '%s')]", "vova").exists())
+                .andExpect(jsonPath("$.testers[?(@.name == '%s')]", "dasha").exists())
                 .andExpect(jsonPath("$.testers[1]").exists())
                 .andExpect(jsonPath("$.manager[0]").exists())
                 .andExpect(jsonPath("$.developers[2]").exists())
@@ -84,12 +83,11 @@ public class JsonPathAssertionTests {
     @Test
     public void testParametrized() throws Exception {
         String dev = "$.developers[%s].name";
-        String qa = "$.testers[%s].name";
 
         this.mockMvc.perform(get("/team/people"))
                 .andExpect(jsonPath(dev, 0).value(startsWith("va")))
-                .andExpect(jsonPath(qa, 0).value(endsWith("va")))
-                .andExpect(jsonPath(qa, 1).value(containsString("d")))
+                .andExpect(jsonPath("$.testers[%s].name", 0).value(endsWith("va")))
+                .andExpect(jsonPath("$.testers[%s].name", 1).value(containsString("d")))
                 .andExpect(jsonPath(dev, 1).value(is(in(Arrays.asList("pasha", "valya")))));
     }
 }
